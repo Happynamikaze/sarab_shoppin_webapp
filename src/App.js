@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';  
 import ProductList from './components/ProductList';
 import productData from './json/products.json';
+import  './App.css'
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -13,7 +14,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className="App bg-gray-100 min-h-screen flex justify-center items-center">
+    <div className="App   flex justify-center items-center">
       <ProductList products={productData} /> 
     </div>
   );
