@@ -93,7 +93,7 @@ const ProductList = ({ products }) => {
 
       <div className="flex flex-col  justify-center items-center w-screen h-screen overflow-hidden relative ">
 
-      <div className='mt-2 absolute top-1 '>
+      <div className='mt-2 absolute top-4 '>
        <ContactInfo/>
       </div>
 
