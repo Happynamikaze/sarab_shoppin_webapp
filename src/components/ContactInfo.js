@@ -4,7 +4,7 @@ const ContactInfo = () => {
   const openEmailApp = (e) => {
     e.preventDefault();
 
-    // This opens the default mail client on web & mobile (via WebView)
+  
     window.location.href = 'mailto:sarabjeetcing@gmail.com';
   };
 
