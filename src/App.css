@@ -2,8 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 .App {
   text-align: center;
 }
+
  
- 
+
+ .card-bg{
+  width: 22rem;
+  background-color: #070e35;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; 
+}
+.cus-color{
+ color: #070e35;
+font-weight: 600;
+}
