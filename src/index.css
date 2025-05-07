@@ -23,3 +23,6 @@ code {
 .gap-cus-mobile{
   gap: 2rem;
 }
+.h-screen{
+  height: 100dvh !important;
+}
