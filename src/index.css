@@ -2,15 +2,16 @@
 
 
 
-
 body {
   margin: 0;
   font-family: "Roboto Mono", monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
    
-    background-color: #8943f256;
+    background-color: #E6E6FA;
+  background-image: url(./assets//img/bg-img.jpg);
     transition: all .3s ease;
+    background-size: 100% 100%;
     
 }
 
@@ -25,4 +26,10 @@ code {
 }
 .h-screen{
   height: 100dvh !important;
+}
+
+.card-cart-blur-bg{
+  backdrop-filter: blur(15px) ;
+  -webkit-backdrop-filter: blur(15px);
+
 }

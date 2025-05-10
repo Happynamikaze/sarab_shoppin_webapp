@@ -6,16 +6,53 @@
 
 .App {
   text-align: center;
+  /* -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px); */
 }
 
  
 
- .card-bg{
-  width: 22rem;
-  background-color: #070e35;
+ .card-bg{     
+  border: 1px solid white;     
+  /* width: 22rem; */
+  background-color: #58479f;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; 
+  transform: translate(0px, 0px) rotate(0deg);
+  z-index: 10;
+  padding: 1rem 2.5rem;
+  /* color: var(--theme-text); */
+  border-radius: 10px;
+  background: #4244aa8c;
+  -webkit-backdrop-filter: blur(7px);
+  backdrop-filter: blur(7px);
+  border: 1px solid hsl(0deg 0% 100% / 18%);
+  box-shadow: 0 10px 30px -15px #2e2d79;
+  transition: all .3s ease;
+  position: relative; 
+  overflow: hidden;
 }
+
+.card-bg::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('./assets//img//noise.png');
+  opacity: 1; /* 15% noise */
+  pointer-events: none;
+  z-index: 1;
+}
+
 .cus-color{
  color: #070e35;
 font-weight: 600;
 }
+
+
+.cus-shadow{
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.cus-shadow-box{
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+

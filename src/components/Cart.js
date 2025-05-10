@@ -7,8 +7,12 @@ const Cart = () => {
   const [carted, setCarted] = useState([]);
 
   useEffect(() => {
-    const data = JSON.parse(localStorage.getItem('carted')) || [];
-    setCarted(data);
+    const rawData = JSON.parse(localStorage.getItem('carted')) || []; 
+    const filteredData = rawData.filter(
+      (item) => item && item.id && item.name && item.imageUrl
+    );
+
+    setCarted(filteredData);
   }, []);
 
   return (

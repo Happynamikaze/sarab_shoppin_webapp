@@ -1,10 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
 import ProductCard from './ProductCard';
-import { Link } from 'react-router-dom';
-import like from '../assets/svg/heart.svg';
-import Dislike from '../assets/svg/disable-heart.svg';
-import Cart from '../assets/svg/cart.svg';
 import Footer from './footer'
 import { motion } from 'framer-motion';
 import ContactInfo from './ContactInfo';
@@ -15,6 +11,7 @@ const ProductList = ({ products }) => {
 
   const [productStack, setProductStack] = useState(products);
 
+
   const [liked, setLiked] = useState([]);
   const [disliked, setDisliked] = useState([]);
   const [carted, setCarted] = useState([]);
@@ -23,13 +20,17 @@ const ProductList = ({ products }) => {
     const storedLiked = JSON.parse(localStorage.getItem('liked')) || [];
     const storedDisliked = JSON.parse(localStorage.getItem('disliked')) || [];
     const storedCarted = JSON.parse(localStorage.getItem('carted')) || [];
+    const filterValid = (arr) =>
+      arr.filter(item => item && item.id && item.name && item.imageUrl);
 
-    setLiked(storedLiked);
-    setDisliked(storedDisliked);
-    setCarted(storedCarted);
-
-
+    setLiked(filterValid(storedLiked));
+    setDisliked(filterValid(storedDisliked));
+    setCarted(filterValid(storedCarted));
   }, []);
+
+
+
+
 
 
   const handleSwipe = (direction, productId) => {
@@ -72,9 +73,6 @@ const ProductList = ({ products }) => {
     localStorage.setItem('disliked', JSON.stringify(finalLists.disliked));
     localStorage.setItem('carted', JSON.stringify(finalLists.carted));
 
-
-
-
     setProductStack(productStack.slice(1));
   };
 
@@ -91,19 +89,44 @@ const ProductList = ({ products }) => {
       transition={{ duration: 0.3 }}
     >
 
-      <div className="flex flex-col  justify-center items-center w-screen h-screen overflow-hidden relative ">
+      <div className="flex  card-cart-blur-bg flex-col  justify-center items-center w-screen h-screen overflow-hidden relative ">
 
-      <div className='mt-2 absolute top-4 '>
-       <ContactInfo/>
-      </div>
+        <div className='mt-2 absolute top-4 '>
+          <ContactInfo />
+        </div>
 
-
+        
         {productStack.length > 0 ? (
 
           <ProductCard  product={productStack[0]} onSwipe={handleSwipe} />
+          
         ) : (
-          <div className="text-center text-xl font-semibold">That's all for now! New items will be <br /> available soon. Stay tuned.🕊️</div>
+          <div className="text-center text-white text-xl font-semibold">That's all for now! New items will be <br /> available soon. Stay tuned.🕊️</div>
         )}
+
+        {/* {productStack.length > 0 ? (
+          <div className="relative w-[90vw] h-[80vh]">
+            {productStack.slice(0, 3).reverse().map((product, index) => (
+              <ProductCard
+                key={product.id}
+                product={product}
+                onSwipe={index === 2 ? handleSwipe : null}
+                style={{
+                  position: 'absolute',
+                  top: `${(2 - index) * 0}px`,
+                  left: `${(2 - index) * 10}px`,
+                  zIndex: index,
+                  transform: `scale(${1 - (2 - index) * 0.04})`,
+                }}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="text-center text-white text-xl font-semibold">
+            That's all for now! New items will be <br /> available soon. Stay tuned.🕊️
+          </div>
+        )} */}
+
 
         <Footer
           likedCount={liked.length}

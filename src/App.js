@@ -27,12 +27,32 @@ const AppInner = () => {
       handler.then((h) => h.remove());
     };
   }, [location, navigate]);
+
+  useEffect(() => {
+    const el = document.getElementById('worst-case');
+    const addClass = () => el?.classList.add('card-cart-blur-bg');
+    const removeClass = () => el?.classList.remove('card-cart-blur-bg');
+
+    const liked = JSON.parse(localStorage.getItem('liked') || '[]');
+    const disliked = JSON.parse(localStorage.getItem('disliked') || '[]');
+    const carted = JSON.parse(localStorage.getItem('carted') || '[]');
+
+    if (
+      (location.pathname === '/liked' && liked.length === 0) ||
+      (location.pathname === '/disliked' && disliked.length === 0) ||
+      (location.pathname === '/cart' && carted.length === 0)
+    ) {
+      addClass();
+    } else {
+      removeClass();
+    }
+  }, [location]);
   
 
   return (
-    <AnimatePresence mode="wait">
+    <AnimatePresence mode="wait" >
       <Routes>
-        <Route path="/" element={<ProductList products={products} />} />
+        <Route path="/" element={<ProductList  products={products} />} />
         <Route path="/liked" element={<Like />} />
         <Route path="/disliked" element={<Dislike />} />
         <Route path="/cart" element={<Cart />} />
@@ -44,7 +64,7 @@ console.log('%cBuilt with love by Sarabjeet Singh 💻', 'color: green; font-siz
 
 const App = () => {
   return (
-    <div className="App w-full h-screen  ">
+    <div className="App w-full h-screen   " id='worst-case'>
       <Router>
         <AppInner />
       </Router>
