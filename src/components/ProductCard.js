@@ -74,7 +74,7 @@ const ProductCard = ({ product, onSwipe, style = {} }) => {
 	return (
 		<div
 			ref={cardRef}
-			className="card-bg h-auto mb-5 p-4 bg-white rounded-xl shadow-xl absolute transition-transform duration-300 ease-out select-none cursor-grab"
+			className=" w-80 card-bg h-auto mb-5 p-4 bg-white rounded-xl shadow-xl absolute transition-transform duration-300 ease-out select-none cursor-grab"
 			style={{
 				transform: `translate(${translate.x}px, ${translate.y}px) rotate(${rotation}deg)`,
 				zIndex: 10,
@@ -112,19 +112,19 @@ const ProductCard = ({ product, onSwipe, style = {} }) => {
 				</div>
 				<div className="mt-4 flex justify-between">
 					<button
-						className="bg-red-500 cus-shadow-box text-white px-4 py-2 rounded-lg"
+						className="bg-red-500 cus-shadow-box text-white px-3 py-2 rounded-lg"
 						onClick={() => onSwipe('left', id)}
 					>
 						<img src={Dislike} alt="Dislike" className="w-4 cus-shadow h-4" />
 					</button>
 					<button
-						className="bg-yellow-500 cus-shadow-box text-white px-4 py-2 rounded-lg"
+						className="bg-yellow-500 cus-shadow-box text-white px-4 mx-2 py-2 rounded-lg"
 						onClick={() => onSwipe('up', id)}
 					>
 						Add to Cart
 					</button>
 					<button
-						className="bg-pink-500 cus-shadow-box text-white px-4 py-2 rounded-lg"
+						className="bg-pink-500 cus-shadow-box text-white px-3 py-2 rounded-lg"
 						onClick={() => onSwipe('right', id)}
 					>
 						<img src={like} alt="Like" className="w-4 cus-shadow h-4" />
